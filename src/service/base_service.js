@@ -1,9 +1,11 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://api.avi-on.com";
+const baseService = axios.create({
+  baseURL: "https://api.avi-on.com"
+});
 
 // Add a request interceptor
-axios.interceptors.request.use(
+baseService.interceptors.request.use(
   function (config) {
     console.log("interceptors.request", config);
     // Do something before request is sent
@@ -16,7 +18,7 @@ axios.interceptors.request.use(
 );
 
 // Add a response interceptor
-axios.interceptors.response.use(
+baseService.interceptors.response.use(
   function (response) {
     console.log("interceptors.response", response);
     // Any status code that lie within the range of 2xx cause this function to trigger
@@ -29,3 +31,5 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export default baseService;

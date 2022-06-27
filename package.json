@@ -4,7 +4,14 @@
   "description": "React JWT Authentication and Authorization",
   "keywords": [
     "jwt",
-    "jwt-authentication"
+    "jwt-authentication",
+    "authorization",
+    "react",
+    "axios",
+    "refresh-token",
+    "react-router-v6",
+    "react-hook-forms",
+    "tailwindcss-v3"
   ],
   "main": "src/index.js",
   "dependencies": {
@@ -20,8 +27,7 @@
     "tailwindcss": "3.1.4"
   },
   "devDependencies": {
-    "@babel/runtime": "7.13.8",
-    "typescript": "4.1.3"
+    "@babel/runtime": "7.13.8"
   },
   "scripts": {
     "start": "react-scripts start",
