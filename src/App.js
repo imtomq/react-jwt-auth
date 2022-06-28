@@ -1,7 +1,12 @@
 import React from "react";
+import baseService from "./service/base_service";
 
 export default function App() {
   const onClickSignout = () => {
+    baseService
+      .delete("/sessions")
+      .then((res) => console.log(res))
+      .catch((e) => {});
     console.log("Sign out");
   };
   return (

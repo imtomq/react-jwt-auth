@@ -9,8 +9,9 @@ baseService.interceptors.request.use(
   function (config) {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user?.auth_token) {
-      config.default.headers.common["Authorization"] =
-        user?.auth_token;
+      config..headers.common[
+        "Authorization"
+      ] = `Token ${user?.auth_token}`;
     }
     // Do something before request is sent
     return config;
@@ -24,7 +25,6 @@ baseService.interceptors.request.use(
 // Add a response interceptor
 baseService.interceptors.response.use(
   function (response) {
-    console.log("interceptors.response", response);
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     return response;
