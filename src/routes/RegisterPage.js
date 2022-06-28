@@ -2,7 +2,6 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router";
 import baseService from "../service/base_service";
-import TextField from "@mui/material/TextField";
 
 export default function RegisterPage() {
   const {
