@@ -7,7 +7,11 @@ const baseService = axios.create({
 // Add a request interceptor
 baseService.interceptors.request.use(
   function (config) {
-    console.log("interceptors.request", config);
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user?.auth_token) {
+      config.default.headers.common["Authorization"] =
+        user?.auth_token;
+    }
     // Do something before request is sent
     return config;
   },

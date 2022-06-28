@@ -1,20 +1,27 @@
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import baseService from "../service/base_service";
 
-export default function LoginPage() {
+function LoginPage() {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm();
+
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(JSON.stringify(data));
     baseService
       .post("/sessions", data)
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res && res?.data) {
+          const user = JSON.stringify(res?.data?.credentials);
+          localStorage.setItem("user", user);
+          navigate("/");
+        }
+      })
       .catch((e) => {});
   };
 
@@ -149,3 +156,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage;
