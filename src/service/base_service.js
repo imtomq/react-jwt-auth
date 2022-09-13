@@ -9,7 +9,7 @@ baseService.interceptors.request.use(
   function (config) {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user?.auth_token) {
-      config..headers.common[
+      config.headers.common[
         "Authorization"
       ] = `Token ${user?.auth_token}`;
     }
@@ -32,6 +32,9 @@ baseService.interceptors.response.use(
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
+    if (error.response.status === 401) {
+      // Call refresh token and assign new token
+    }
     return Promise.reject(error);
   }
 );
