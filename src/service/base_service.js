@@ -9,9 +9,7 @@ baseService.interceptors.request.use(
   function (config) {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user?.auth_token) {
-      config.headers.common[
-        "Authorization"
-      ] = `Token ${user?.auth_token}`;
+      config.headers.Authorization = `Token ${user?.auth_token}`;
     }
     // Do something before request is sent
     return config;
